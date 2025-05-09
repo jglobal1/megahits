@@ -1,3 +1,4 @@
+'use client';
 import { useState, useEffect } from 'react';
 import { FaInstagram, FaFacebook, FaSoundcloud } from 'react-icons/fa';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
@@ -7,7 +8,6 @@ import Head from 'next/head';
 export default function Home() {
   const [showSection, setShowSection] = useState(false);
   const [isDaydanceOpen, setIsDaydanceOpen] = useState(false);
-  const [isPaid, setIsPaid] = useState(false); // Track payment status
 
   // Handle scroll event
   const handleScroll = () => {
@@ -29,20 +29,6 @@ export default function Home() {
       nextSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
-
-  // Simulate payment confirmation for demonstration purposes
-  const handlePaymentConfirmation = () => {
-    setIsPaid(true); // Set to true after payment is done
-  };
-
-  if (!isPaid) {
-    return (
-      <div className="min-h-screen bg-black text-white flex justify-center items-center">
-        <p className="text-lg">Please complete your payment to access the content.</p>
-        {/* Optionally, add a button for payment or continue */}
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -73,7 +59,8 @@ export default function Home() {
 
             {/* Menu Items */}
             <div className="flex justify-center flex-grow space-x-8 text-lg font-medium hidden sm:flex">
-               {/* DAYDANCE Dropdown */}
+              
+              {/* DAYDANCE Dropdown */}
               <div className="relative">
                 <button
                   onClick={() => setIsDaydanceOpen(!isDaydanceOpen)}
@@ -175,3 +162,4 @@ export default function Home() {
     </div>
   );
 }
+
